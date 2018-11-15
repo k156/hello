@@ -15,3 +15,12 @@ def add_commit_push():
             if input_msg == false:
                 input_msg = (datetime.datetime.now.month, datetime.datetime.now.day)
                 os.system("git push -u origin master")
+
+
+
+import sys
+sa = sys.argv
+
+with open(sa[1], "r", encoding ='utf-8') as file:
+    for line in file:
+        print(line)
