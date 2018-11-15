@@ -17,7 +17,7 @@ def autogit():
             msg_2 = input_msg
             os.system("git commit -am '{}'.format(msg_2)")
     else:
-        os.system("git commit -am '{}'.format(msg)")
+        os.system('git commit -am "{}".format(msg)')
     os.system("git push -u origin master")
     exit()
 
