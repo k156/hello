@@ -1,6 +1,4 @@
-class Number:
-    def iteration(self):
-        for i in range (1, 10)
-        print(i)
-
-Number.iteration()
+def randomcard ():
+    import random
+    deck = [heart1,2,3,4,spade1,2,3,4,diamond1,2,3,4,clover1,2,3,4]
+    card = random.choice(deck)
