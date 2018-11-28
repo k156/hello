@@ -5,13 +5,11 @@
 
 파일 설명
 --------------
-1stGUI.py 
-<br/>GUI를 실습한 것.
+**1stGUI.py** : GUI를 실습한 것.
 
-Blackjack.py  
-<br/>첫 과제인 블랙잭 만들기 연습.
+**Blackjack.py** : 첫 과제인 블랙잭 만들기 연습.
 
-Casting.py   정수로 변환하는 모듈(현재 비어있음)
+**Casting.py** : 정수로 변환하는 모듈(현재 비어있음)
 
-Class.py   class 만드는 연습.
+**Class.py** : class 만드는 연습.
 
