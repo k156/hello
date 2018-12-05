@@ -24,6 +24,14 @@ INSERT INTO Student(Name, addr, birth, tel, email)
 select * from Student;
 select * from Test;
 
+update Student set gender = (case when tel like '010-1%' or tel like '010-2%' or tel like '010-3%' 
+                             or tel like '010-4%' or tel like '010-5%' then 0 else 1 end)
+                             where id > 0;
+
+
+
+Student
+
 insert into Test(name) select name from Student where id < 5;
 
 select * from Student where name like '%정_';
@@ -36,6 +44,8 @@ select * from Student where email like 'a%' and tel like '____9%';
 select * from Student where addr = '강원' order by birth desc limit 10,5;
 
 ALTER DATABASE dooodb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
 
 
 CREATE TABLE `Test3` (
