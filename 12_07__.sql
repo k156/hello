@@ -13,9 +13,12 @@ select name, count(*) from Student group by name having count(*) > 1;
 
 select s.name, e.* from Student s left outer join Enroll e on s.id = e.student;
 
+   
 
 
+select * from Enroll;
 
+desc Subject;
 
 select count(*) from Student;
 select name, birth from Student order by birth asc limit 10;

@@ -59,7 +59,7 @@ select subject, student, count(*) from Enroll group by subject, student having c
 
 
 
-update Enroll set student where ;
+;
 
 
 START TRANSACTION;
