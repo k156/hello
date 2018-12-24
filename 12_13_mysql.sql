@@ -36,3 +36,5 @@ create trigger tr_enroll_subject_students
  END
  //
  delimiter 
+ 
+ 
