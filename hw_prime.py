@@ -6,4 +6,5 @@ while (i < 100):
         if j == (i - 1):
             sum = sum + i
     i += 1
+    
 print (sum)

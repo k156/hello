@@ -33,3 +33,28 @@ a = Card()
 a = Card()
 
 
+<<<<<<< HEAD
+=======
+class Player(Card):
+    def __init__(self):
+        while (self.carsum < 21):
+        super().__init__()
+        super().has_jqk()
+        
+        if self.num == 'a':
+            while (a_value == False):
+                a_value = input("A값을 1과 11중에 선택하세요.")
+                if a_value == 1:
+                    self.num = 1
+                elif a_value == 11:
+                    self.num = 11
+                else:
+                    continue
+        super().summation()
+       
+
+
+
+a = Card()
+p = Player()
+>>>>>>> 730d80490e373b808d7c9229945c1dae30716bee
