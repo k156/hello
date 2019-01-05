@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>signin</title>
+    <link rel="stylesheet" href="1.css">
+    <script src="1.js"></script>
+  </head>
+  <body>
+    
+    <h1>안녕하세요! Log For You 입니다.</h1>
+    <div>
+    <button onclick="sign_in(doc)"><strong>의사 로그인</strong></button>
+      <div id = "doc">
+        <form id="frm" onsubmit="return checkLogin()" method="post">
+          <input type="text" id="userid" value="" placeholder="id">
+          <input type="password" id="userpw" value=""  placeholder="password">
+          <button>Sign-in</button>
+        </form>
+      </div>
+    </div>
+    <br/>
+    <button onclick="sign_in(pat)"><strong>일반 로그인</strong></button>
+      <div id = "pat">
+        <form id="frm" onsubmit="return checkLogin()" method="post">
+          <input type="text" id="userid" value="" placeholder="id">
+          <input type="password" id="userpw" value=""  placeholder="password">
+          <button>Sign-in</button>
+        </form>
+      </div>
+    <br/>
+    <br/>
+    
+
+      <img src="https://images.pexels.com/photos/1236701/pexels-photo-1236701.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=375&amp;w=630">
+      
+  </body>
+</html>
