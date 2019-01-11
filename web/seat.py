@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -22,3 +23,6 @@ time.sleep(5)                # cf.  driver.implicitly_wait(5)
 driver.quit()
 
 
+=======
+print("a")
+>>>>>>> e69e37930856563e97f7116cdffd457a6b1e6823

@@ -1,3 +1,26 @@
+<<<<<<< HEAD
+
+
+    
+    def has_jqk(self):
+        self.numberlist = [] 
+        if self.num != 'j' and self.num != 'q' and self.num != 'k' and self.num != 'a':
+            self.num = Casting.to_int(self.num)
+            self.numberlist.append(self.num)
+    
+        else:
+            self.cardlist.append(10)
+
+        print(self.numberlist) 
+
+    def summation(self):
+        self.cardsum = reduce(lambda x, y: x + y, self.numberlist)             
+        print(self.cardsum)
+
+
+a = Card()
+
+=======
 import random
 from functools import reduce
 
@@ -43,10 +66,30 @@ class Card:
         
 
         
+>>>>>>> 730d80490e373b808d7c9229945c1dae30716bee
 
 class Player(Card):
     def __init__(self):
         super().__init__()
+<<<<<<< HEAD
+        super().has_jqk()
+        if self.num == 'a':
+            while (a_value == False):
+                a_value = input("A값을 1과 11중에 선택하세요.")
+                if a_value == 1:
+                    self.num = 1
+                elif a_value == 11:
+                    self.num = 11
+                else:
+                    continue
+        super().summation()
+       
+
+
+
+a = Card()
+p = Player()
+=======
         super().cardsum()
         print(self.cardlist)
     
@@ -94,3 +137,4 @@ elif a.cardsum == b.cardsum :
 
 elif a.cardsum > b.cardsum :
     print("패")    
+>>>>>>> 730d80490e373b808d7c9229945c1dae30716bee

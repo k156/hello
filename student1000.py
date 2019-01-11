@@ -52,7 +52,7 @@ print(data)
 conn = pymysql.connect(
     host='localhost',
     user='dooo',
-    password='dooo!',
+    password='1234567',
     port=3306,
     db='dooodb',
     charset='utf8')
