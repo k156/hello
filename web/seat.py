@@ -22,8 +22,3 @@ time.sleep(5)                # cf.  driver.implicitly_wait(5)
 driver.quit()
 
 
-
-#로그인
-#가장 근접한 url
-#구문분석
-#좌석수 크롤링 프로그램 짜기 (구문분석)
