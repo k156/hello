@@ -1,15 +1,17 @@
 from time import sleep
 from selenium import webdriver
+from bs4 import BeautifulSoup
+import requests
 
-USER = "본인id"
-PASS = "본인pw"
 
+USER = ""
+PASS = ""
 
 browser = webdriver.Chrome()
 browser.implicitly_wait(3)
 
 # 로그인 페이지에 접근하기. 
-url_login = "https://www.yes24.com/Templates/FTLogin.aspx?ReturnURL=http://ticket.yes24.com/Pages/Perf/Detail/DetailSpecial.aspx&&ReturnParams=IdPerf=32059"
+url_login = "https://www.yes24.com/Templates/FTLogin.aspx?ReturnURL=http://ticket.yes24.com/Pages/Perf/Detail/Detail.aspx&&ReturnParams=IdPerf=30862"
 browser.get(url_login)
 print("로그인 페이지에 접근합니다.")
 
@@ -33,33 +35,12 @@ print("예매 버튼을 클릭합니다.")
 browser.switch_to.window(browser.window_handles[1])
 
 # 날짜 선택하기(26일)
-date_sel = browser.find_element_by_css_selector("td.select > a").click()
+date_sel = browser.find_element_by_id("2019-01-17").click()
 sleep(1)
 
 # '좌석선택' 버튼 클릭.
 browser.find_element_by_css_selector("div.fr img").click()
 
+soup = BeautifulSoup(res.text, 'html.parser')
 
-
-html = browser.find_elements_by_css_selector("div.seat > ul.hi > li")
-
-for 
-
-print(html)
-
-
-
-# for seat in seats :
-
-#    print(seat.text)
-
-
-# # for s in seat:
-# #     print("-", s.text)
-
-
-
-
-
-# 브라우저 닫음
-# browser.close()
+print(soup)
