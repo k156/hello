@@ -1,55 +1,80 @@
 from bs4 import BeautifulSoup
 import requests
+import json
 from time import sleep
+import pprint
 
 
 headers = {
     "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
 }
 
-url = "https://www.melon.com/chart/index.htm#params%5Bidx%5D=1/"
-html = requests.get(url, headers = headers).text
+url = "https://www.melon.com/chart/index.htm"
+lurl = "https://www.melon.com/commonlike/getSongLike.json"
 
-soup = BeautifulSoup(html, 'html.parser')
+htmlRes = requests.get(url, headers = headers)
+print("HTML>>>>", htmlRes.url)
+soup = BeautifulSoup(htmlRes.text, 'html.parser')
+trs = soup.select('tr[data-song-no]')
 
-trs = soup.select("tr#lst50")
-trs2 = soup.select("tr#lst100")
-likes = soup.select("#lst50 > td:nth-of-type(8) > div > button > span.cnt")
-
+dic = {}
 for tr in trs:
+	song_no = tr.attrs['data-song-no']
+	rank = tr.select_one('td span.rank').text
+	info = tr.select_one('div.wrap_song_info')
+	title = info.select_one('div.rank01 a').text
+	singer = info.select_one('div.rank02 a').text
+	# print(song_no, rank, title, singer)
+	# print("--------------------------")
+	dic[song_no] = {"rank": rank, "title": title, "singer" : singer}
 
-	tds = tr.select('td')
-	rank = tds[1].text
-	td4s = tr.select('td:nth-of-type(5)')
-	for td in td4s:
-		titles = td.attrs['title']
-		print(titles)
+# pprint.pprint(dic)
+# print(",".join(list(dic.keys())))
 
-	# info = tds[4].attrs['title']
+params = {
+	"contsIds": ",".join(list(dic.keys()))
+}
 
-	# singer = tds[5]
+jsonRes = requests.get(lurl, headers = headers, params=params)
+print(jsonRes.url)
+jsonData = json.loads(jsonRes.text)
+# print(json.dumps(jsonData, ensure_ascii=False, indent=2))
 
-    # print(rank, title, type(title))
-
-
-	# print(info)
-# 	print(rank, info)
-
-
-
-
-	# a = tr.select('a[href]')
-	# for i in a:
-	# 	titles = i.attrs['title']
-	# 	print(titles)
+for j in jsonData['contsLike']:
+	contsid = j['CONTSID']
+	likecnt = j['SUMMCNT']
+	print(contsid, likecnt)
+	dic[str(contsid)]['likecnt'] = likecnt
 
 
+pprint.pprint(dic)
 
-# for tr in trs2:
+
+# html = requests.get(url, headers = headers).text
+# result = requests.get(lurl, headers=headers, params = params).text
+
+
+# print("result", result)
+# # jsonData = json.loads(result)
+
+
+# soup = BeautifulSoup(html, 'html.parser')
+
+# trs = soup.select("tr#lst50")
+# td4s = soup.select("tr#lst50 > td:nth-of-type(6)")
+# likecnt = soup.select("#lst50 > td:nth-of-type(8) > div > button > span.cnt")
+
+
+# for tr in trs:
 # 	tds = tr.select('td')
-
 # 	rank = tds[1].text
-# 	info = tds[4].next_sibling.next_sibling.text
-    
-# 	print(rank, info)
+# 	# print(rank)
+
+
+# for	td4 in td4s:
+# 	info = td4.text
+# 	# print(info)
+
+
+# dic = {}
 
