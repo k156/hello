@@ -1,3 +1,4 @@
+import csv, codecs
 from bs4 import BeautifulSoup
 import requests
 import json
@@ -36,7 +37,7 @@ params = {
 }
 
 jsonRes = requests.get(lurl, headers = headers, params=params)
-print(jsonRes.url)
+# print(jsonRes.url)
 
 
 jsonData = json.loads(jsonRes.text)
@@ -45,38 +46,33 @@ jsonData = json.loads(jsonRes.text)
 for j in jsonData['contsLike']:
 	contsid = j['CONTSID']
 	likecnt = j['SUMMCNT']
-	print(contsid, likecnt)
+	# print(contsid, likecnt)
 	dic[str(contsid)]['likecnt'] = likecnt
 
 
 pprint.pprint(dic)
 
 
-# html = requests.get(url, headers = headers).text
-# result = requests.get(lurl, headers=headers, params = params).text
+liked = sorted(dic.items(), key=lambda d: d[1]['likecnt'])
+leastliked = liked[0][1]['likecnt']
 
 
-# print("result", result)
-# # jsonData = json.loads(result)
+with codecs.open('output.csv', 'w', 'utf-8') as ff:
+	writer = csv.writer(ff, delimiter=',', quotechar='"')
+	writer.writerow(['랭킹', '제목', '가수명', '좋아요수', '좋아요 차이'])
+	
+	likesum = 0
+	diffsum = 0
 
+	for i in dic.items():
+		rank = i[1]['rank']
+		title = i[1]['title']
+		singer = i[1]['singer']
+		likes = i[1]['likecnt']
+		diff = i[1]['likecnt'] - leastliked
+		l = [rank,title,singer,likes,diff]
+		writer.writerow(l)
+		likesum = likesum + likes
+		diffsum = diffsum + diff
 
-# soup = BeautifulSoup(html, 'html.parser')
-
-# trs = soup.select("tr#lst50")
-# td4s = soup.select("tr#lst50 > td:nth-of-type(6)")
-# likecnt = soup.select("#lst50 > td:nth-of-type(8) > div > button > span.cnt")
-
-
-# for tr in trs:
-# 	tds = tr.select('td')
-# 	rank = tds[1].text
-# 	# print(rank)
-
-
-# for	td4 in td4s:
-# 	info = td4.text
-# 	# print(info)
-
-
-# dic = {}
-
+	writer.writerow(['계','','',likesum, diffsum])

@@ -2,8 +2,8 @@ from time import sleep
 from selenium import webdriver
 from bs4 import BeautifulSoup
 
-USER = "아이디"
-PASS = "비번"
+USER = "본인아이디"
+PASS = "본인비번"
 
 browser = webdriver.Chrome()
 browser.implicitly_wait(3)
