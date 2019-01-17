@@ -5,17 +5,25 @@ from selenium.webdriver.common.keys import Keys
 
 drvPath = 'C:\workspace\chromedriver_win32\chromedriver.exe'
 driver = webdriver.Chrome(drvPath)
+<<<<<<< HEAD
 UserId1 = "seno"
 UserId2 = "rbur"
 UserId3 = "ns"
 UserPw1 = "Kim0"
 UserPw2 = "5803"
 UserPw3 = "158"
+=======
+UserId = "id"
+UserPw = "pw"
+
+
+>>>>>>> 6418f1b6141837524189f249c348434fe30596dc
 
 driver.get("https://www.naver.com")
 sleep(1)
 
 driver.find_element_by_class_name('lg_local_btn').click()
+<<<<<<< HEAD
 print("click big button!!")
 sleep(2)
 
@@ -50,6 +58,34 @@ sleep(0.5)
 pw.send_keys(Keys.RETURN)
 
 sleep(1)
+=======
+
+sleep(2)
+
+
+driver.execute_script("document.getElementById('id').value = 'id'")
+# send_keys(Keys.TAB)
+driver.execute_script("document.getElementById('pw').value = 'pw'")
+
+driver.find_element_by_xpath('//*[@id="frmNIDLogin"]/fieldset/input').click()
+# myid.send_keys(Keys.RETURN)
+
+
+# var myid = document.getElementById('id').value 
+# id.send_keys(Keys.TAB)
+# sleep(1)
+
+# pw = driver.find_element_by_id('pw')
+# for d in UserPw:
+#     sleep(random.randrange(1, 5) * 0.03)
+#     pw.send_keys(d)
+
+
+# sleep(0.5)
+
+
+# sleep(1)
+>>>>>>> 6418f1b6141837524189f249c348434fe30596dc
 
           # cf.  driver.implicitly_wait(5)
 # driver.quit() # driver.close()
