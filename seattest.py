@@ -1,6 +1,5 @@
 from time import sleep
 from selenium import webdriver
-from bs4 import BeautifulSoup
 
 
 USER = "senorburns"
@@ -31,7 +30,8 @@ reserve_bt = browser.find_element_by_class_name("rbt_reserve").click()
 print("예매 버튼을 클릭합니다.")
 
 # 팝업 창으로 전환.
-browser.switch_to.window(browser.window_handles[1])
+browser.switch_to.window(browser.window_handles[2])
+sleep(2)
 
 # 날짜 선택하기(26일)
 date_sel = browser.find_element_by_id("2019-01-17").click()
@@ -73,7 +73,8 @@ browser.find_element_by_xpath('//*[@id="chkinfoAgree"]').click()
 
 pic = browser.save_screenshot("pic.png")
 
-browser.find_element_by_xpath('//*[@id="imgPayEnd"]').click()
+
+# browser.find_element_by_xpath('//*[@id="imgPayEnd"]').click()
 
 # for i in seat:
 #     a = i.text
@@ -90,3 +91,13 @@ browser.find_element_by_xpath('//*[@id="imgPayEnd"]').click()
 
 # 브라우저 닫음
 # browser.close()
+
+
+
+#티켓팅시 열리지 않은 창의 html 구조를 어떻게 알고 함? 
+
+#취켓팅시:
+#title이 있는 좌석의 id를 찾아서 그걸 클릭
+#if fail: 좌석선택 continue, if succeed: 과정 다 끝낸 후 멈춤.
+
+
