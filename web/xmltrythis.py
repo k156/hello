@@ -57,6 +57,7 @@ liked = sorted(dic.items(), key=lambda d: d[1]['likecnt'])
 leastliked = liked[0][1]['likecnt']
 
 
+
 with codecs.open('output.csv', 'w', 'utf-8') as ff:
 	writer = csv.writer(ff, delimiter=',', quotechar='"')
 	writer.writerow(['랭킹', '제목', '가수명', '좋아요수', '좋아요 차이'])

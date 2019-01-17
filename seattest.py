@@ -4,8 +4,13 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def split_2(_seat):
+def split(_seat):
 	seat_list = _seat.split('^')
+	seats = []
+	for i in seat_list:
+		real_seat_list = i.split('@')
+		seats.append(real_seat_list)
+	return seats
 
 
 
@@ -38,10 +43,9 @@ seat_info2 = soup.find('section').get_text()
 # tm.split_1(seat_info)
 print("--------------")
 
+split(seat_info2)
 
-tm.split_2(seat_info2)
-
-
+print(seats[0][2])
 
 # #셀레늄 써서 예사 로그인
 
