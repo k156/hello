@@ -1,10 +1,7 @@
 from time import sleep
 from selenium import webdriver
-<<<<<<< HEAD
-=======
 from bs4 import BeautifulSoup
 import requests
->>>>>>> 6418f1b6141837524189f249c348434fe30596dc
 
 
 def split(_seat):
@@ -23,16 +20,10 @@ session = requests.session()
 #url = "http://ticket.yes24.com/OSIF/Book.asmx/GetHallMapRemain"
 url = "http://ticket.yes24.com/OSIF/Book.asmx/GetHallMapRemainFN"
 
-<<<<<<< HEAD
-# 팝업 창으로 전환.
-browser.switch_to.window(browser.window_handles[2])
-sleep(2)
-=======
 headers = {
    "Referer": "http://ticket.yes24.com/OSIF/Book.asmx?op=GetHallMapRemainFN",
    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
 }
->>>>>>> 6418f1b6141837524189f249c348434fe30596dc
 
 params = {
    'idHall': '8531',
@@ -98,12 +89,7 @@ print(seats[0][2])
 # #좌석 선택하기
 # browser.switch_to.frame(browser.find_element_by_name("ifrmSeatFrame"))
 
-<<<<<<< HEAD
-
-# browser.find_element_by_xpath('//*[@id="imgPayEnd"]').click()
-=======
 # seats = requests.get(url)
->>>>>>> 6418f1b6141837524189f249c348434fe30596dc
 
 
 
@@ -118,22 +104,6 @@ print(seats[0][2])
 # print("할인쿠폰 다음버튼")
 # sleep(3)
 
-<<<<<<< HEAD
-
-
-# 브라우저 닫음
-# browser.close()
-
-
-
-#티켓팅시 열리지 않은 창의 html 구조를 어떻게 알고 함? 
-
-#취켓팅시:
-#title이 있는 좌석의 id를 찾아서 그걸 클릭
-#if fail: 좌석선택 continue, if succeed: 과정 다 끝낸 후 멈춤.
-
-
-=======
 # browser.find_element_by_xpath('//*[@id="StepCtrlBtn04"]/a[2]/img').click()
 # browser.find_element_by_id('rdoPays22').click()
 # browser.find_element_by_xpath('//*[@id="selBank"]/option[5]').click()
@@ -141,4 +111,3 @@ print(seats[0][2])
 # browser.find_element_by_xpath('//*[@id="chkinfoAgree"]').click()
 # pic = browser.save_screenshot("pic.png")
 # browser.find_element_by_xpath('//*[@id="imgPayEnd"]').click()
->>>>>>> 6418f1b6141837524189f249c348434fe30596dc
