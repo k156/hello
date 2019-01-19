@@ -2,7 +2,7 @@ from time import sleep
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import requests
-
+from pprint import pprint
 
 # def split(_seat):
 # 	seat_list = _seat.split('^')
@@ -48,7 +48,12 @@ import requests
 # print(seats[0][2])
 
 
-area = '빈 자리 있는 area'
+# area = '빈 자리 있는 area'
+
+# headers = {
+#     "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+# 	"referrer":"http://ticket.yes24.com/OSIF/Book.asmx/GetBookWhole"
+# }
 
 
 #셀레늄 써서 예사 로그인
@@ -60,7 +65,8 @@ browser = webdriver.Chrome()
 browser.implicitly_wait(3)
 
 # 로그인 페이지에 접근하기. 
-url_login = "https://www.yes24.com/Templates/FTLogin.aspx?ReturnURL=http://ticket.yes24.com/Pages/Perf/Detail/Detail.aspx&&ReturnParams=IdPerf=30862"
+url_login = "https://www.yes24.com/Templates/FTLogin.aspx?ReturnURL=http://ticket.yes24.com/Pages/Perf/Detail/DetailSpecial.aspx&&ReturnParams=IdPerf=31893"
+
 browser.get(url_login)
 print("로그인 페이지에 접근합니다.")
 
@@ -84,34 +90,47 @@ print("예매 버튼을 클릭합니다.")
 browser.switch_to.window(browser.window_handles[1])
 
 # 날짜 선택하기(26일)
-date_sel = browser.find_element_by_id("2019-01-27").click()
+date_sel = browser.find_element_by_id("2019-01-20").click()
 sleep(1)
+time = browser.find_element_by_xpath('//*[@id="ulTime"]/li[1]').click()
 
 # '좌석선택' 버튼 클릭.
 res = browser.find_element_by_css_selector("div.fr img").click()
 
 #좌석 선택하기
 browser.switch_to.frame(browser.find_element_by_name("ifrmSeatFrame"))
+html = browser.page_source
 
-seats = requests.get(url)
+soup = BeautifulSoup(html, 'html.parser')
+empty_seats = soup.select('div#divSeatArray div[title]')
 
 
+while True:
+	sleep(2)
+	if len(empty_seats) <= 0:
+		continue
 
-browser.find_element_by_id('t800012').click()
-browser.find_element_by_class_name('booking').click()
-print("좌석선택완료")
+	front_seat = empty_seats[0]
 
-browser.switch_to_default_content()
-print("다시원래창으로 돌아옴")
+	sid = front_seat.attrs['id']
 
-browser.find_element_by_xpath('//*[@id="StepCtrlBtn03"]/a[2]/img').click()
-print("할인쿠폰 다음버튼")
-sleep(3)
+	browser.find_element_by_id(sid).click()
+	browser.find_element_by_class_name('booking').click()
+	print("좌석선택완료")
 
-browser.find_element_by_xpath('//*[@id="StepCtrlBtn04"]/a[2]/img').click()
-browser.find_element_by_id('rdoPays22').click()
-browser.find_element_by_xpath('//*[@id="selBank"]/option[5]').click()
-browser.find_element_by_xpath('//*[@id="cbxCancelFeeAgree"]').click()
-browser.find_element_by_xpath('//*[@id="chkinfoAgree"]').click()
-pic = browser.save_screenshot("pic.png")
-browser.find_element_by_xpath('//*[@id="imgPayEnd"]').click()
+	browser.switch_to_default_content()
+	print("다시원래창으로 돌아옴")
+
+	browser.find_element_by_xpath('//*[@id="StepCtrlBtn03"]/a[2]/img').click()
+	print("할인쿠폰 다음버튼")
+	sleep(3)
+
+	browser.find_element_by_xpath('//*[@id="StepCtrlBtn04"]/a[2]/img').click()
+
+	browser.find_element_by_id('//*[@id="rdoPays2"]').click() #신용카드 선택이 안 됨
+	browser.find_element_by_xpath('//*[@id="cbxCancelFeeAgree"]').click()
+	browser.find_element_by_xpath('//*[@id="chkinfoAgree"]').click()
+	pic = browser.save_screenshot("pic.png")
+	browser.find_element_by_xpath('//*[@id="imgPayEnd"]').click()
+
+	break
