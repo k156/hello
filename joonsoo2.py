@@ -54,12 +54,12 @@ for i in singer_no_lst:
   
     
 
-   #  for i, element in enumerate(labels):
+    for i, element in enumerate(labels):
         
-   #      if labels[i].text == "소속사":
-   #          #  print(labels[i+1].text)
+        if labels[i].text == "소속사":
+            #  print(labels[i+1].text)
 
-   #          label_name_lst.append(labels[i+1].text)
+            label_name_lst.append(labels[i+1].text)
 
         
 

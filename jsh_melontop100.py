@@ -46,6 +46,7 @@ for j in jsonData['contsLike']:
     songDic = dic[key]
     songDic['likecnt'] = j['SUMMCNT']
 
+
 result = sorted(dic.items(), key=lambda d: d[1]['ranking'])
 # pprint(dic)
 
@@ -53,25 +54,26 @@ result = sorted(dic.items(), key=lambda d: d[1]['ranking'])
 # leastLike = sortLike[0][1]['likecnt']
 leastLike = min(x[1]['likecnt'] for x in dic.items())
 
-# pprint(leastLike)
+# # pprint(leastLike)
 
-with codecs.open('./melonanswer.csv', 'w', 'utf-8') as ff:
-    writer = csv.writer(ff, delimiter=',', quotechar='"')
-    writer.writerow(['랭킹', '제목', '가수', '좋아요', '좋아요차이'])
 
-    likesum = 0
-    diffsum = 0
-    for i in result:
-        song = i[1]
-        rank = song['ranking']
-        title = song['title']
-        singer = song['singer']
-        likecnt = song['likecnt']
-        likeDiff = likecnt - leastLike
-        likesum = likesum + likecnt
-        diffsum = diffsum + likeDiff
-        l = [rank, title, singer, likecnt, likeDiff]
-        writer.writerow(l)
-        # print(song)
+# with codecs.open('./melonanswer.csv', 'w', 'utf-8') as ff:
+#     writer = csv.writer(ff, delimiter=',', quotechar='"')
+#     writer.writerow(['랭킹', '제목', '가수', '좋아요', '좋아요차이'])
 
-    writer.writerow(['계', '', '', likesum, diffsum])
+#     likesum = 0
+#     diffsum = 0
+#     for i in result:
+#         song = i[1]
+#         rank = song['ranking']
+#         title = song['title']
+#         singer = song['singer']
+#         likecnt = song['likecnt']
+#         likeDiff = likecnt - leastLike
+#         likesum = likesum + likecnt
+#         diffsum = diffsum + likeDiff
+#         l = [rank, title, singer, likecnt, likeDiff]
+#         writer.writerow(l)
+#         # print(song)
+
+#     writer.writerow(['계', '', '', likesum, diffsum])
