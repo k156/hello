@@ -25,31 +25,31 @@ trs = soup.select('div#tb_list table tbody tr[data-song-no]')
 
 
 
-for u in urls:
-    url = u.get('href')
-    sp = re.compile('goSongDetail\(\'(.*)\'.*')
-    ap = re.compile('goAlbumDetail\(\'(.*)\'.*')
-    sid = re.findall(sp, url)
-    aid = re.findall(ap, url)	
-    slist += sid
-    alist += aid
+# for u in urls:
+#     url = u.get('href')
+#     sp = re.compile('goSongDetail\(\'(.*)\'.*')
+#     ap = re.compile('goAlbumDetail\(\'(.*)\'.*')
+#     sid = re.findall(sp, url)
+#     aid = re.findall(ap, url)	
+#     slist += sid
+#     alist += aid
 
-print( song_id, album_id)
+# print( song_id, album_id)
 
 
 
-genre = []
+# genre = []
 
-for s in song_id:
-    # surl ="https://www.melon.com/song/detail.htm?songId={}".format(s)
-    surl = "http://vlg.berryservice.net:8099/melon/songdetail?songId={}".format(s)
-    shtml = requests.get(surl, headers = headers)
-    ssoup = BeautifulSoup(shtml.text, 'html.parser')
-    g = ssoup.select_one("#downloadfrm > div > div > div.entry > div.meta > dl > dd:nth-of-type(3)").text
-    genre.append(g)
-    sleep(1)
+# for s in song_id:
+#     # surl ="https://www.melon.com/song/detail.htm?songId={}".format(s)
+#     surl = "http://vlg.berryservice.net:8099/melon/songdetail?songId={}".format(s)
+#     shtml = requests.get(surl, headers = headers)
+#     ssoup = BeautifulSoup(shtml.text, 'html.parser')
+#     g = ssoup.select_one("#downloadfrm > div > div > div.entry > div.meta > dl > dd:nth-of-type(3)").text
+#     genre.append(g)
+#     sleep(1)
 
-print(genre)
+# print(genre)
 
 
 song= {}

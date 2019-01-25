@@ -68,6 +68,22 @@ song_table = []
 dic = {}
 
 
+song ={}
+for tr in trs:
+    song_no = tr.attrs['data-song-no']
+    title = tr.select_one('div.ellipsis.rank01 a').text
+    singers = tr.select('div.ellipsis.rank02 span a')
+    singer = ",".join([a.text for a in singers])
+    # for a in albums:
+    #     album = a.text
+    # song_table += [[song_no, title, singer]]
+
+    song[song_no] = {'title':title, 'singer': singer}
+
+
+
+exit()
+
 
 for tr in trs:
 	song_no = tr.attrs['data-song-no']
@@ -81,16 +97,19 @@ for tr in trs:
 		singer_no2 = re.findall(sn, singer_no)[0]
 		singer_no_lst.append(singer_no2)
 		singer_name = singer.text
+		print(singer_name)
 		singer_name_lst.append(singer_name)
 	Song[song_no] = {'song_no': song_no, 'title':title, 'singer': singer_name}
 	dsinger[song_no] = {'singer_no': singer_no2, 'singer_name': singer_name}
 	dic[song_no] = {'rank': int(ranking)}
 
-sss = []
+# sss = []
 
-for so in Song.keys():
-	sss.append([int(so), Song[so]['title']])
+# for so in Song.keys():
+# 	sss.append([int(so), Song[so]['title'], Song[so]['singer']])
 
+print(sss)
+exit()
 
 # pprint(dsinger)
 
