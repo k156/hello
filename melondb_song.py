@@ -6,6 +6,9 @@ from time import sleep
 from pprint import pprint
 import melondb_func as mf
 
+
+
+
 soup = mf.request_soup()
 
 def get_song_data():

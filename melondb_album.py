@@ -14,7 +14,6 @@ headers = {
 
 def get_album_data():
    
-  
    albums = soup.select('div.ellipsis.rank03 > a')
 
    # print(albums)

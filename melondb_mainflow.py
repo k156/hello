@@ -9,6 +9,20 @@ headers = {
         "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
     }
 
+sql_oldsongs = 'select song_no from Song'
+
+def oldsongs():
+	conn = mf.get_conn('melondb')
+	with conn:
+		cur = conn.cursor()
+		cur.execute(sql_oldsongs)
+		return cur.fetchall()
+
+
+oldsongs = oldsongs()
+
+print(oldsongs)
+
 
 SongRank_insert_list = mr.get_rank_data()
 album_insert_lst = ma.get_album_data()
@@ -17,12 +31,16 @@ sss = ms.get_song_data()
 songsing_insert_lst = mss.get_songsing_data()
 
 
+
+
 sql_rank_insert = "insert into SongRank(song_no, rank, rank_dt, like_cnt) values(%s,%s,%s,%s)"
 sql_album_insert= "insert ignore into Album(album_no, album_name, publisher, likecnt, rating) values(%s,%s,%s,%s,%s)"
 sql_singer_insert = "insert ignore into Singer(singer_no, singer_name, label) values(%s,%s,%s)"
 sql_song_insert = "insert ignore into Song(song_no, song_name, genre) values(%s,%s,%s)"
 sql_songsing_insert = "insert into SongSingMap(song, sing) values(%s,%s)"
 
+
+exit()
 
 mf.save_data(sql_rank_insert, SongRank_insert_list)
 mf.save_data(sql_album_insert, album_insert_lst)

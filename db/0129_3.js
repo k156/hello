@@ -1,0 +1,1 @@
+db.test.update({singer: 'singer1'}, { $unset: {'likecnt': 1}})
