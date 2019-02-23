@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import requests, json
 from bs4 import BeautifulSoup
 from pprint import pprint
@@ -68,5 +67,3 @@ finally:
 		print("Fail to connect!!", err2)
 	
 
-=======
->>>>>>> e9140d2119117fda4c87d94608b8b23778f212c8
