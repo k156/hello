@@ -4,7 +4,7 @@ def get_conn_hw(db):
     return pymysql.connect(
         host='34.85.92.216',
         user='root',
-        password='gusdnr75',
+        password='',
         port=3306,
         db=db,
         charset='utf8')
