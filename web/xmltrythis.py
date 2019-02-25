@@ -24,7 +24,7 @@ for tr in trs:
 	rank = tr.select_one('td span.rank').text
 	info = tr.select_one('div.wrap_song_info')
 	title = info.select_one('div.rank01 a').text
-	singer = info.select_one('div.rank02 a').text
+	singer = info.select('div.rank02 a')
 	# print(song_no, rank, title, singer)
 	# print("--------------------------")
 	dic[song_no] = {"rank": rank, "title": title, "singer" : singer}
@@ -58,7 +58,7 @@ leastliked = liked[0][1]['likecnt']
 
 
 
-with codecs.open('output.csv', 'w', 'utf-8') as ff:
+with codecs.open('melontop100.csv', 'w', 'utf-8') as ff:
 	writer = csv.writer(ff, delimiter=',', quotechar='"')
 	writer.writerow(['랭킹', '제목', '가수명', '좋아요수', '좋아요 차이'])
 	

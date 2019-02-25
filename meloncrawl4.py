@@ -95,6 +95,7 @@ for tr in trs:
 		singer_no = singer.get("href")
 		sn = re.compile('goArtistDetail\(\'(.*)\'.*')
 		singer_no2 = re.findall(sn, singer_no)[0]
+		
 		singer_no_lst.append(singer_no2)
 		singer_name = singer.text
 		print(singer_name)
@@ -133,7 +134,7 @@ exit()
 
 # print(result)
 
-# exit()
+exit()
 
 
 
@@ -170,4 +171,7 @@ finally:
 		conn.close()
 	except Exception as err2:
 		print("Fail to connect!!", err2)
+
+
+
 	

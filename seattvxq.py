@@ -87,7 +87,7 @@ reserve_bt = browser.find_element_by_class_name("rbt_reserve").click()
 print("예매 버튼을 클릭합니다.")
 
 # 팝업 창으로 전환.
-browser.switch_to.window(browser.window_handles[1])
+browser.switch_to.window(browser.window_handles[2])
 
 # 날짜 선택하기(26일)
 date_sel = browser.find_element_by_id("2019-01-27").click()
