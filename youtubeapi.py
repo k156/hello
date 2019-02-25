@@ -1,7 +1,7 @@
 from apiclient.discovery import build
 from pprint import pprint
 
-API_KEY = "AIzaSyBFu4isdWKC_nD25c_u0Zx2NA2ODkwDVZI"
+API_KEY = 
 
 def search_ytb():
     youtube = build('youtube', 'v3', developerKey=API_KEY)

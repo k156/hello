@@ -1,7 +1,10 @@
 import pymysql
 from pprint import pprint
 import bigquery
-# client = bigquery.get_client(json_key_file='Bigquery.json', readonly=False)
+import os
+
+
+client = bigquery.get_client(json_key_file=".../Bigquery.json", readonly=False)
 
 
 
@@ -39,21 +42,21 @@ adic = {}
 slist = []
 alist = []
 
-# if not client.check_table(DATABASE, TABLE):
-#     print("Create table {0}.{1}".format(DATABASE, TABLE), file=sys.stderr)
+if not client.check_table(DATABASE, TABLE):
+    print("Create table {0}.{1}".format(DATABASE, TABLE), file=sys.stderr)
 
-#     client.create_table(DATABASE, TABLE, [
-#             {'name': 'song_no', 'type': 'integer', 'description': 'song id'},
-#             {'name': 'title', 'type': 'string', 'description': 'song title'},
-#             {'name': 'genre', 'type': 'string', 'description': 'genre'},
-#             {'name': 'album', 'type': 'record', 'description': 'album info',
-#             'fields': [ {'name': 'album_id', 'type': 'string'},
-#                         {'name': 'album_title', 'type': 'string'},
-#                         {'name': 'album_genre', 'type': 'string'},
-#                         {'name': 'rating', 'type': 'integer'},
-#                         {'name': 'releasedt', 'type': 'string'}]
-#             },
-#         ])
+    client.create_table(DATABASE, TABLE, [
+            {'name': 'song_no', 'type': 'integer', 'description': 'song id'},
+            {'name': 'title', 'type': 'string', 'description': 'song title'},
+            {'name': 'genre', 'type': 'string', 'description': 'genre'},
+            {'name': 'album', 'type': 'record', 'description': 'album info',
+            'fields': [ {'name': 'album_id', 'type': 'string'},
+                        {'name': 'album_title', 'type': 'string'},
+                        {'name': 'album_genre', 'type': 'string'},
+                        {'name': 'rating', 'type': 'integer'},
+                        {'name': 'releasedt', 'type': 'string'}]
+            },
+        ])
 
 
 for i in arows:
@@ -70,10 +73,12 @@ for r in rows:
 
 
 for _id, _info in dic.items():
-    for key, val in arows.items():
-        if _info['album'] == key:
+    # for key, val in adic.items():  
+    if _info['album'] == adic.keys():
+        _info['album'] = adic.values()
+        pprint(dic)
             
-        
+
 
 
 # try:
