@@ -58,8 +58,8 @@ from pprint import pprint
 
 #셀레늄 써서 예사 로그인
 
-USER = "senorburns"
-PASS = "Kim05803158"
+USER = "id"
+PASS = "pw"
 
 browser = webdriver.Chrome()
 browser.implicitly_wait(3)

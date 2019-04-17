@@ -99,6 +99,7 @@ res = browser.find_element_by_css_selector("div.fr img").click()
 
 #좌석 선택하기
 browser.switch_to.frame(browser.find_element_by_name("ifrmSeatFrame"))
+browser.find_element
 html = browser.page_source
 
 soup = BeautifulSoup(html, 'html.parser')
