@@ -1,6 +1,7 @@
 from sklearn import svm, metrics
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.model_selection import cross_val_score
 
 csv = pd.read_csv('./data/iris.csv')
 cdata = csv[['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth']]
@@ -18,6 +19,6 @@ pred = clf.predict(testData)     # 검증(test)
 score = metrics.accuracy_score(testLabel, pred)
 print("score=", score)
 
-print("===========================")
-r = clf.predict([[5.6, 2.9, 3.6, 1.3]])
-print("품종:", r[0])
+kscores = cross_val_score(clf, cdata, cret, cv=5)
+print("kscroes =", kscores)
+print("mean score =", kscores.mean())
